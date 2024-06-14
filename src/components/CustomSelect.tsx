@@ -5,10 +5,10 @@ interface CustomSelectProps {
   options?: SelectOption[]
 }
 
-const CustomSelect = forwardRef((props: CustomSelectProps, ref: LegacyRef<HTMLSelectElement>) => {
+const CustomSelect = forwardRef(({ options, ...args }: CustomSelectProps, ref: LegacyRef<HTMLSelectElement>) => {
   return (
-    <select ref={ref}>
-      {props.options?.map(({ label, value }) => <option key={label} value={value}>{label}</option>)}
+    <select {...args} ref={ref}>
+      {options?.map(({ label, value }) => <option key={label} value={value}>{label}</option>)}
     </select>
   )
 })

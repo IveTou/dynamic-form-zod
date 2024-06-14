@@ -1,6 +1,7 @@
 import { UseFormRegister, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { get } from "lodash"
 import simple from "../templates/facades/simple"
 import FormField from "../types/FormField"
 import CustomSelect from "../components/CustomSelect"
@@ -8,7 +9,6 @@ import CustomSelect from "../components/CustomSelect"
 type FormData = z.infer<typeof simple.schema>
 
 function fieldSelector(params: FormField, register: UseFormRegister<any>) {
-  console.log('RESS', register(params.id as string))
   return {
     INPUT: <input {...register(params.id as string)}/>,
     SELECT: <CustomSelect {...params} {...register(params.id as string)}/>,
@@ -27,17 +27,18 @@ function Dynamic() {
     console.log('submit', data)
   }
 
-  console.log('errors', errors);
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {simple.facade.map(params => {
         const field = fieldSelector(params, register)
         return (
-          <label key={params.id}>
-            {params.name}
-            {field}
-          </label>
+          <div key={params.id}>
+            <label>
+              {params.name}
+              {field}
+            </label>
+            <p>{get(errors, params.id, { message: undefined })?.message}</p>
+          </div>
         )
       })}
       
