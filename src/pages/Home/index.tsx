@@ -5,7 +5,8 @@ function Home() {
     <>
       <h1>Hello</h1>
       <ul>
-        <li><Link to='/stand'>STANDALONE FORM</Link></li>
+        <li><Link to='/static'>STATIC FORM</Link></li>
+        <li><Link to='/dynamic'>DYNAMIC FORM</Link></li>
       </ul>
     </>
   )

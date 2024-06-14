@@ -11,7 +11,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>
 
-function StandAlone() {
+function Static() {
   const {
     register,
     handleSubmit,
@@ -48,4 +48,4 @@ function StandAlone() {
   )
 }
 
-export default StandAlone
+export default Static
