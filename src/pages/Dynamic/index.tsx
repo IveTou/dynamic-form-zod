@@ -1,26 +1,12 @@
-import { CSSProperties } from "react"
-import { UseFormRegister, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { get } from "lodash"
-import simple from "../templates/facades/simple"
-import FormField from "../types/FormField"
-import CustomSelect from "../components/CustomSelect"
+import simple from "../../templates/facades/simple"
+import styles from "./styles"
+import fieldSelector from "../../utils/fieldSelector"
 
 type FormData = z.infer<typeof simple.schema>
-
-function fieldSelector(params: FormField, register: UseFormRegister<any>) {
-  return {
-    INPUT: <input style={{ width: '100%' }} {...register(params.id as string)}/>,
-    SELECT: <CustomSelect {...params} {...register(params.id as string)}/>,
-  }[params.type]
-}
-
-const style: CSSProperties = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-  gap: 24,
-}
 
 function Dynamic() {
   const {
@@ -36,7 +22,7 @@ function Dynamic() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div style={style}>  
+      <div style={styles}>  
         {simple.facade.map(params => {
           const field = fieldSelector(params, register)
           return (
