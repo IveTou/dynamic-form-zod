@@ -8,6 +8,7 @@ const facade: FormField[] = [
     id: 'username',
     type: 'INPUT',
     required: true,
+    span: 2,
   },
   {
     name: 'Area',

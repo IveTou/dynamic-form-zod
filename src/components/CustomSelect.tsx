@@ -7,7 +7,7 @@ interface CustomSelectProps {
 
 const CustomSelect = forwardRef(({ options, ...args }: CustomSelectProps, ref: LegacyRef<HTMLSelectElement>) => {
   return (
-    <select {...args} ref={ref}>
+    <select {...args} ref={ref} style={{ width: '100%' }}>
       {options?.map(({ label, value }) => <option key={label} value={value}>{label}</option>)}
     </select>
   )
