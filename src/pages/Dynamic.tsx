@@ -8,6 +8,7 @@ import CustomSelect from "../components/CustomSelect"
 type FormData = z.infer<typeof simple.schema>
 
 function fieldSelector(params: FormField, register: UseFormRegister<any>) {
+  console.log('RESS', register(params.id as string))
   return {
     INPUT: <input {...register(params.id as string)}/>,
     SELECT: <CustomSelect {...params} {...register(params.id as string)}/>,

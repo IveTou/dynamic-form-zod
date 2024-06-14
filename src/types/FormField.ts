@@ -1,12 +1,15 @@
 import { FieldType } from "./FieldType"
 
+export type SelectOption = { label: string, value: string }
+
 type FormField = {
   name: string,
   id: string,
   type: FieldType,
-  options?: { label: string, value: string }[]
+  options?: SelectOption[]
   span?: number,
   required?: boolean,
 }
 
 export default FormField
+

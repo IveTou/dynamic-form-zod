@@ -1,7 +1,6 @@
-import { ZodRawShape, ZodTypeAny, z } from "zod"
+import { ZodTypeAny, z } from "zod"
 import FormField from "../../types/FormField";
 import schema, { ShemaDMKey } from "../schema";
-
 
 const facade: FormField[] = [
   {
@@ -39,5 +38,11 @@ const facadeSchema = Object.keys(schema)
 export default {
   facade,
   schema: z.object(facadeSchema)
-    .refine(({ password, confirmPassword}) => password === confirmPassword, { message: `password doesn't match`})
+    .refine(({ password, confirmPassword}) => 
+      password === confirmPassword,
+      {
+        message: `password doesn't match`,
+        path: ["password"]
+      }
+    )
 }
