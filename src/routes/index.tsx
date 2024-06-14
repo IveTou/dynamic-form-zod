@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import StandAlone from "../pages/StandAlone";
 import Home from "../pages/Home";
+import Dynamic from "../pages/Dynamic";
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
   {
     path: '/stand',
     element: <StandAlone />,
+  },
+  {
+    path: '/dynamic',
+    element: <Dynamic />,
   }
 ])
 

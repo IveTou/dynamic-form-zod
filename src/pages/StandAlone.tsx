@@ -19,8 +19,9 @@ function StandAlone() {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
+  
   const onSubmit = (data: any) => {
-
+    console.log('submit', data)
   }
 
   console.log('errors', errors);
