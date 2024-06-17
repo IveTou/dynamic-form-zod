@@ -31,7 +31,7 @@ function Dynamic() {
                 {params.name}
                 {field}
               </label>
-              <p>{get(errors, params.id, { message: undefined })?.message}</p>
+              <p>{get(errors, params.id, { message: undefined })?.message?.toString()}</p>
             </div>
           )
         })}

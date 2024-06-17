@@ -8,6 +8,4 @@ const schema = {
   confirmPassword: z.string(),
 }
 
-export type ShemaDMKey = keyof typeof schema;
-
 export default schema

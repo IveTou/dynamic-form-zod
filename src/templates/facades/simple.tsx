@@ -1,6 +1,7 @@
-import { ZodTypeAny, z } from "zod"
+import { z } from "zod"
 import FormField from "../../types/FormField";
-import schema, { ShemaDMKey } from "../schema";
+import schema from "../schema";
+import generateSchema from "../utils/generateSchema";
 
 const facade: FormField[] = [
   {
@@ -8,7 +9,7 @@ const facade: FormField[] = [
     id: 'username',
     type: 'INPUT',
     required: true,
-    span: 2,
+    span: 3,
   },
   {
     name: 'Area',
@@ -31,10 +32,7 @@ const facade: FormField[] = [
   }
 ]
 
-const facadeIds =  facade.map(({ id }) => id);
-const facadeSchema = Object.keys(schema)
-  .filter(key => facadeIds.includes(key))
-  .reduce((acc, curr) => ({ ...acc, [curr]: schema[curr as ShemaDMKey]}), {} as { [k in ShemaDMKey]: ZodTypeAny})
+const facadeSchema = generateSchema(schema, facade)
 
 export default {
   facade,
