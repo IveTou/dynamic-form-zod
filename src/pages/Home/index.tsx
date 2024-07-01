@@ -7,6 +7,7 @@ function Home() {
       <ul>
         <li><Link to='/static'>STATIC FORM</Link></li>
         <li><Link to='/dynamic'>DYNAMIC FORM</Link></li>
+        <li><Link to='/cross'>DYNAMIC CROSS VALIDATION FORM</Link></li>
       </ul>
     </>
   )

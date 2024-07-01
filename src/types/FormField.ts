@@ -9,6 +9,10 @@ type FormField = {
   options?: SelectOption[]
   span?: number,
   required?: boolean,
+  constraint?: {
+    id: string,
+    value: string | number,
+  }
 }
 
 export default FormField
