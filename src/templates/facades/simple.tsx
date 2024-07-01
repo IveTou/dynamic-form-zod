@@ -9,7 +9,7 @@ const facade: FormField[] = [
     id: 'username',
     type: 'INPUT',
     required: true,
-    span: 3,
+    span: 4,
   },
   {
     name: 'Area',
@@ -18,17 +18,20 @@ const facade: FormField[] = [
     options: [
       { label: 'Volvo', value: 'volvo'},
       { label: 'Fiat', value: 'fiat'}
-    ]
+    ],
+    span: 4,
   },
   {
     name: 'Password',
     id: 'password',
-    type: 'INPUT'
+    type: 'INPUT',
+    span: 2,
   },
   {
     name: 'Confirm password',
     id: 'confirmPassword',
-    type: 'INPUT'
+    type: 'INPUT',
+    span: 2,
   }
 ]
 

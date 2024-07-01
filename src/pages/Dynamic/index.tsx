@@ -15,6 +15,7 @@ function Dynamic() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(simple.schema),
+    mode: "onChange"
   })
   const onSubmit = (data: any) => {
     console.log('submit', data)

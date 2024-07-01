@@ -18,6 +18,7 @@ function Static() {
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    mode: "onChange"
   })
   
   const onSubmit = (data: any) => {
