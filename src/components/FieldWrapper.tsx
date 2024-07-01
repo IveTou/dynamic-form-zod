@@ -3,7 +3,6 @@ import { get } from "lodash"
 import { FieldErrors } from "react-hook-form";
 import FormField from "../types/FormField";
 
-
 interface FieldWrapperProps {
   params: FormField,
   errors: FieldErrors<{[x: string]: unknown;}>

@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import withContraints from "../../templates/facades/with_constraints"
-import styles from "./styles"
 import fieldSelector from "../../utils/fieldSelector"
 import FieldWrraper from "../../components/FieldWrapper"
+import styles from "./styles"
 
 type FormData = z.infer<typeof withContraints.schema>
 
@@ -13,6 +13,7 @@ function CrossValidation() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<FormData>({
     resolver: zodResolver(withContraints.schema),
     mode: "onChange"
@@ -21,15 +22,16 @@ function CrossValidation() {
     console.log('submit', data)
   }
 
+  const watchFields = watch()
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div style={styles}>  
         {withContraints.facade.map(params => {
-          const field = fieldSelector(params, register)
-          return <FieldWrraper params={params} errors={errors}>{field}</FieldWrraper>
+          const field = fieldSelector(params, register, watchFields)
+          return <FieldWrraper key={params.name} params={params} errors={errors}>{field}</FieldWrraper>
         })}
-      </div>
-      
+      </div>  
       <input type="submit" />
     </form>
   )
