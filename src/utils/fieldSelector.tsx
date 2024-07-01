@@ -4,11 +4,7 @@ import FormField from "../types/FormField";
 import { ReactElement } from "react";
 import { FieldType } from "../types/FieldType";
 
-function fieldSelector(fields: FormField ,register: UseFormRegister<any>, initialValues?: {[key: string]: any}) {
-  const constrainedValue = fields.constraint && initialValues && initialValues[fields.constraint.id]
-  const isConstrained = constrainedValue !== fields.constraint?.value
-  //disable some fields based on others values
-
+function fieldSelector(fields: FormField ,register: UseFormRegister<any>, isConstrained?: boolean) {
   const componentMap: Record<FieldType, ReactElement> = {
     INPUT: <input style={{ width: '100%' }} {...register(fields.id as string)} disabled={isConstrained} />,
     SELECT: <CustomSelect {...fields} {...register(fields.id as string)} disabled={isConstrained} />,

@@ -22,13 +22,17 @@ function CrossValidation() {
     console.log('submit', data)
   }
 
-  const watchFields = watch()
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div style={styles}>  
         {withContraints.facade.map(params => {
-          const field = fieldSelector(params, register, watchFields)
+          //disable some fields based on others values
+          //however we can define another constraints
+          const fieldValue = params.constraint && watch(params.constraint.id)
+          // maybe using "watch" could lead some performance concerns
+          const isConstrained = fieldValue !== params.constraint?.value
+
+          const field = fieldSelector(params, register, isConstrained)
           return <FieldWrraper key={params.name} params={params} errors={errors}>{field}</FieldWrraper>
         })}
       </div>  
